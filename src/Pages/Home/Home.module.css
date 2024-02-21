@@ -1,0 +1,31 @@
+.Home {
+    display: grid;
+
+}
+
+.StartButton {
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 10px 20px;
+    background-color:  #d25476;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    transition: background-color 200ms ease-in-out;
+    margin: auto;
+}
+
+.StartButton:hover {
+    background-color:  #913850;
+}
+
+.Home h1 {
+    margin-bottom: 30px;
+    font-size: 3rem;
+    background: rgb(210,84,118);
+    background: linear-gradient(145deg, rgba(210,84,118,1) 0%, rgba(6,38,102,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: default;
+}
