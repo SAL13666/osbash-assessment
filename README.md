@@ -1,1 +1,1 @@
-# osbash-assasment
+Osbash technical assessment
