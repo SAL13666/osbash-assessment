@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Quiz.module.css";
 import Question from "../../Components/Question";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Quiz = () => {
     const quizData = useSelector((state) => state.quiz.value);
     const userInfo = useSelector((state) => state.userData.value);
@@ -16,8 +17,18 @@ const Quiz = () => {
                 questionData={currentQuestion ? currentQuestion: null}
                 questionIndex={currentQuestionIndex}
             />
-            <button onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}>hello</button>
-            <button onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}>hi</button>
+            {currentQuestionIndex == questions?.length - 1 ? (
+                <Link to={"/Scores"}>get Results</Link>
+                ): 
+                <button onClick={() => {
+                    if(userInfo.answers[`question ${currentQuestionIndex}`] === undefined) { //need change
+                        console.log("error");
+                        return;
+                    }
+                    setCurrentQuestionIndex((prev) => prev + 1)
+                }}>next</button>
+            }
+            <button onClick={() => setCurrentQuestionIndex((prev) => prev - 1)} disabled={currentQuestionIndex == 0}>back</button>
         </div>
     );
 };

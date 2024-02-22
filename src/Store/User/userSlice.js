@@ -5,7 +5,7 @@ export const userSlice = createSlice({
     initialState: {
         value: {
             score: 0,
-            Answers: {},
+            answers: {},
         },
     },
     reducers: {
@@ -13,7 +13,7 @@ export const userSlice = createSlice({
             state.value.score += action.payload;
         },
         setAnswers: (state, action) => {
-            state.value.Answers[action.payload.questionName] = action.payload.answer;
+            state.value.answers[action.payload.questionName] = action.payload.answer;
         },
     },
 })
