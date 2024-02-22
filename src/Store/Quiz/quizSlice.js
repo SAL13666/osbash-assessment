@@ -7,7 +7,7 @@ export const quizSlice = createSlice({
     },
     reducers: {
         setData: (state, action) => {
-            state.value = action;
+            state.value = action.payload;
         }
     },
 })

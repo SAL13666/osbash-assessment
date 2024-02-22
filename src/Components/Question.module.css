@@ -1,0 +1,35 @@
+.Question {
+    min-width: 100vw;
+    display: grid;
+    justify-content: center;
+}
+
+.Question h1 {
+    font-size: 3rem;
+}
+
+.Question ul {
+    display: grid;
+    margin-top: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.Choice {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: rgba(2, 21, 37, 0.192);
+    border: 2px solid #57027e;
+    list-style: none;
+    transition: background-color 200ms ease-in-out;
+}
+
+.Choice:hover {
+    background-color: #57027e;
+}
+
+.Active {
+    background-color: #57027e;
+}
