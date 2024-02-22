@@ -1,6 +1,28 @@
+@keyframes HomeH1Animation{
+    0% {
+        transform: translateX(100%);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+}
+
+@keyframes StartQuizAnmation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 100%;
+    }
+}
+
 .Home {
     display: grid;
-
+    position: relative;
 }
 
 .StartButton {
@@ -13,6 +35,7 @@
     font-family: "Roboto", sans-serif;
     transition: background-color 200ms ease-in-out;
     margin: auto;
+    animation: StartQuizAnmation 500ms ease-in-out;
 }
 
 .StartButton:hover {
@@ -21,6 +44,7 @@
 
 .Home h1 {
     margin-bottom: 30px;
+    animation: HomeH1Animation 500ms ease-in-out;
     font-size: 3rem;
     background: rgb(210,84,118);
     background: linear-gradient(145deg, rgba(210,84,118,1) 0%, rgba(6,38,102,1) 100%);

@@ -6,7 +6,7 @@ const Home = () => {
     console.log(title);
     return (
         <div className={styles.Home}>
-            <h1>{title.Name}</h1>
+            <h1>{title?.Name}</h1>
             <Link to={"/Quiz"} className={styles.StartButton}>Start Quiz</Link>
         </div>
     );
