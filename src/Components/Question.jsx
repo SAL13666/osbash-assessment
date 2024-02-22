@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { handleClick } from "../Utilities/Question.utilites";
 import styles from "./Question.module.css";
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Question = ({questionData, questionIndex}) => {
-    // const userInfo = useSelector((state) => state.userData.value);
     const [activeAnswer, setActiveAnswer] = useState(null);
     const dispatch = useDispatch();
     if(!questionData) {

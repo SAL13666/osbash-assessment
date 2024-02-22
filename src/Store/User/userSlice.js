@@ -6,6 +6,8 @@ export const userSlice = createSlice({
         value: {
             score: 0,
             answers: {},
+            correctAnswers: [],
+            incorrectAnswers: [],
         },
     },
     reducers: {
@@ -15,9 +17,15 @@ export const userSlice = createSlice({
         setAnswers: (state, action) => {
             state.value.answers[action.payload.questionName] = action.payload.answer;
         },
+        pushToCorrectAnswers: (state, action) => {
+            state.value.correctAnswers.push(action.payload);
+        },
+        pushToIncorrectAnswers: (state, action) => {
+            state.value.incorrectAnswers.push(action.payload);
+        },
     },
 })
 
-export const { incrementScore, setAnswers } = userSlice.actions;
+export const { incrementScore, setAnswers, pushToCorrectAnswers, pushToIncorrectAnswers } = userSlice.actions;
 
 export default userSlice.reducer

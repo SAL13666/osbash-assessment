@@ -3,7 +3,9 @@ import styles from "./Quiz.module.css";
 import Question from "../../Components/Question";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { incrementScore, pushToCorrectAnswers, pushToIncorrectAnswers } from "../../Store/User/userSlice";
 const Quiz = () => {
+    const dispatch = useDispatch();
     const quizData = useSelector((state) => state.quiz.value);
     const userInfo = useSelector((state) => state.userData.value);
     const questions = quizData.questions;
@@ -18,9 +20,23 @@ const Quiz = () => {
                 questionIndex={currentQuestionIndex}
             />
             {currentQuestionIndex == questions?.length - 1 ? (
-                <Link to={"/Scores"}>get Results</Link>
+                <Link to={"/Scores"} onClick={() => {
+                    questions.map(question => {
+                        return question.correct_choice;
+                    }).forEach((correctChoice, index) => {
+                        const degree = questions[index].degree;
+                        const userAnswer = userInfo.answers[`question ${index}`];
+                        if(userAnswer == correctChoice - 1) {
+                            dispatch(incrementScore(degree));
+                            dispatch(pushToCorrectAnswers({index, answer: userAnswer}))
+                        } else {
+                            dispatch(pushToIncorrectAnswers({index, answer: userAnswer, correctChoice: correctChoice - 1}))
+                        }
+                    });
+                }}>get Results</Link>
                 ): 
                 <button onClick={() => {
+                    
                     if(userInfo.answers[`question ${currentQuestionIndex}`] === undefined) { //need change
                         console.log("error");
                         return;

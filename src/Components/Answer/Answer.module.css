@@ -1,0 +1,34 @@
+.Answer {
+    font-size: 1.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 100%;
+}
+
+.Answer .Correct,
+.Answer .Incorrect {
+    margin: 10px;
+    text-align: center;
+}
+
+.Correct {
+    background-color: rgba(0, 255, 0, 0.137);
+}
+
+.Incorrect {
+    background-color: rgba(255, 0, 0, 0.116);
+}
+
+@media only screen and (max-width: 600px){
+    .Answer {
+        font-size: 1rem;
+        grid-template-columns: 100%;
+    }
+    
+    .Answer .Correct,
+    .Answer .Incorrect {
+        margin: 0px;
+        text-align: center;
+    }
+}
