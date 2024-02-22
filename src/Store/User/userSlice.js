@@ -5,23 +5,19 @@ export const userSlice = createSlice({
     initialState: {
         value: {
             score: 0,
-            correctAnswers: [],
-            incorrectAnswers: [],
+            Answers: {},
         },
     },
     reducers: {
         incrementScore: (state, action) => {
             state.value.score += action.payload;
         },
-        setCorrectAnswers: (state, action) => {
-            state.value.correctAnswers.push(action.payload);
-        },
-        setIncorrectAnswers: (state, action) => {
-            state.value.incorrectAnswers.push(action.payload);
+        setAnswers: (state, action) => {
+            state.value.Answers[action.payload.questionName] = action.payload.answer;
         },
     },
 })
 
-export const { incrementScore, setCorrectAnswers, setIncorrectAnswers } = userSlice.actions;
+export const { incrementScore, setAnswers } = userSlice.actions;
 
 export default userSlice.reducer

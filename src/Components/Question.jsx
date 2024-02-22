@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleClick } from "../Utilities/Question.utilites";
 import styles from "./Question.module.css";
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from "react-redux";
 
 const Question = ({questionData, questionIndex}) => {
-    const [activeAnswer, setActiveAnswer] = useState(null)
+    // const userInfo = useSelector((state) => state.userData.value);
+    const [activeAnswer, setActiveAnswer] = useState(null);
+    const dispatch = useDispatch();
     if(!questionData) {
         return;
     }
-    const {question, choices, correct_choice, degree } = questionData;
+    const {question, choices} = questionData;
     return (
         <div className={styles.Question}>
             <h1><span>{questionIndex + 1} - </span>{question}</h1>
@@ -17,8 +20,8 @@ const Question = ({questionData, questionIndex}) => {
                     return <li 
                         key={index} 
                         className={`${styles.Choice} ${index == activeAnswer ? styles.Active : null}`}
-                        onClick={() => handleClick(index, setActiveAnswer)}>
-                            {choice}
+                        onClick={() => handleClick(index, setActiveAnswer, {questionIndex, answer: index}, dispatch)}>
+                            <span>{index + 1} - </span>{choice}
                         </li>
                 })}
             </ul>
@@ -30,8 +33,6 @@ Question.propTypes  = {
     questionData: PropTypes.shape({
         question: PropTypes.string,
         choices: PropTypes.arrayOf(PropTypes.string),
-        correct_choice: PropTypes.number,
-        degree: PropTypes.number,
     }),
     questionIndex: PropTypes.number,
 };

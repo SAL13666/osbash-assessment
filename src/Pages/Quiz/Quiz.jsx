@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Quiz.module.css";
-import { setCorrectAnswers } from "../../Store/User/userSlice";
 import Question from "../../Components/Question";
 import { useState } from "react";
 const Quiz = () => {
-    // const dispatch = useDispatch();
     const quizData = useSelector((state) => state.quiz.value);
     const userInfo = useSelector((state) => state.userData.value);
     const questions = quizData.questions;
