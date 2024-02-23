@@ -2,12 +2,13 @@ import { useState } from "react";
 import { handleClick } from "@Utilities/Question/Question.utilites";
 import styles from "./Question.module.css";
 import PropTypes from 'prop-types';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Question = ({ questionData, questionIndex }) => {
     const [activeAnswer, setActiveAnswer] = useState(null);
+    const userAnswers = useSelector((state) => state.userData.value.answers);
     const dispatch = useDispatch();
-
+    console.log(userAnswers);
     if (!questionData) {
         return <div>Loading...</div>;
     }
@@ -21,7 +22,7 @@ const Question = ({ questionData, questionIndex }) => {
                 {choices.map((choice, index) => (
                     <li
                         key={index}
-                        className={`${styles.Choice} ${index === activeAnswer ? styles.Active : ''}`}
+                        className={`${styles.Choice} ${index === activeAnswer || index === userAnswers[`question ${questionIndex}`] ? styles.Active : ''}`}
                         onClick={() => handleClick(index, setActiveAnswer, { questionIndex, answer: index }, dispatch)}
                         tabIndex={0}
                         aria-label={choice}
