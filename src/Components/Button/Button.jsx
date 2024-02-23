@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
-import styles from "./Button.module.css";
 import PropTypes from 'prop-types';
+import styles from "./Button.module.css";
 
-const Button = ({title, link, onClick, to= "", disabled}) => {
+const Button = ({ title, link, onClick, to = "", disabled }) => {
     return (
-        (link ? (
-                <Link onClick={onClick} to={to} className={styles.Button}>{title}</Link>
-        ) : (
-            <button onClick={onClick} className={styles.Button} disabled={disabled}>
-                {title}
-            </button>
-        ))
+        <>
+            {link ? (
+                <Link onClick={onClick} to={to} className={styles.Button} aria-label={title} tabIndex={0}>
+                    {title}
+                </Link>
+            ) : (
+                <button onClick={onClick} className={styles.Button} disabled={disabled} aria-label={title} tabIndex={0}>
+                    {title}
+                </button>
+            )}
+        </>
     );
 };
 
-Button.propTypes  = {
-    title: PropTypes.string,
+Button.propTypes = {
+    title: PropTypes.string.isRequired,
     link: PropTypes.bool,
     onClick: PropTypes.func,
     to: PropTypes.string,

@@ -4,31 +4,37 @@ import styles from "./Question.module.css";
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 
-const Question = ({questionData, questionIndex}) => {
+const Question = ({ questionData, questionIndex }) => {
     const [activeAnswer, setActiveAnswer] = useState(null);
     const dispatch = useDispatch();
-    if(!questionData) {
-        return;
+
+    if (!questionData) {
+        return <div>Loading...</div>;
     }
-    const {question, choices} = questionData;
+
+    const { question, choices } = questionData;
+
     return (
         <div className={styles.Question}>
-            <h1><span>{questionIndex + 1} - </span>{question}</h1>
+            <h1 aria-label={question}><span>{questionIndex + 1} - </span>{question}</h1>
             <ul>
-                {choices.map((choice, index) => {
-                    return <li 
-                        key={index} 
-                        className={`${styles.Choice} ${index == activeAnswer ? styles.Active : null}`}
-                        onClick={() => handleClick(index, setActiveAnswer, {questionIndex, answer: index}, dispatch)}>
-                            <span>{index + 1} - </span>{choice}
-                        </li>
-                })}
+                {choices.map((choice, index) => (
+                    <li
+                        key={index}
+                        className={`${styles.Choice} ${index === activeAnswer ? styles.Active : ''}`}
+                        onClick={() => handleClick(index, setActiveAnswer, { questionIndex, answer: index }, dispatch)}
+                        tabIndex={0}
+                        aria-label={choice}
+                    >
+                        <span>{index + 1} - </span>{choice}
+                    </li>
+                ))}
             </ul>
         </div>
     );
 };
 
-Question.propTypes  = {
+Question.propTypes = {
     questionData: PropTypes.shape({
         question: PropTypes.string,
         choices: PropTypes.arrayOf(PropTypes.string),

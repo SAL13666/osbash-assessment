@@ -4,10 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from "react";
 import { fetchData } from "./Utilities/App/App.utilites";
 import { setData } from "./Store/Quiz/quizSlice";
-/* -----TODO-----
-  1: on unmount animation for all the components
-*/
-
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
