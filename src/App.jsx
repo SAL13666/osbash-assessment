@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import styles from "./App.module.css";
 import { useDispatch } from 'react-redux';
 import { useEffect } from "react";
-import { fetchData } from "./Utilities/App.utilites";
+import { fetchData } from "./Utilities/App/App.utilites";
 import { setData } from "./Store/Quiz/quizSlice";
 /* -----TODO-----
   1: on unmount animation for all the components

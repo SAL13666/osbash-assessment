@@ -53,3 +53,13 @@
     -webkit-text-fill-color: transparent;
     cursor: default;
 }
+
+@media only screen and (max-width: 1024px) {
+    .Home h1 {
+        font-size: 2rem;
+    }
+
+    .StartButton {
+        font-size: 1.5rem;
+    }
+}

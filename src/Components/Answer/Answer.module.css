@@ -3,7 +3,11 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+.Answer p:first-of-type {
+    align-self: center;
 }
 
 .Answer .Correct,
@@ -20,7 +24,7 @@
     background-color: rgba(255, 0, 0, 0.116);
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 1024px) {
     .Answer {
         font-size: 1rem;
         grid-template-columns: 100%;

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { handleClick } from "../Utilities/Question.utilites";
+import { useState } from "react";
+import { handleClick } from "@Utilities/Question/Question.utilites";
 import styles from "./Question.module.css";
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";

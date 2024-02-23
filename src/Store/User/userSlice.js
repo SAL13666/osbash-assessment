@@ -23,9 +23,17 @@ export const userSlice = createSlice({
         pushToIncorrectAnswers: (state, action) => {
             state.value.incorrectAnswers.push(action.payload);
         },
+        resetUserData: (state) => {
+            state.value = {
+                score: 0,
+                answers: {},
+                correctAnswers: [],
+                incorrectAnswers: [],
+            }
+        }
     },
 })
 
-export const { incrementScore, setAnswers, pushToCorrectAnswers, pushToIncorrectAnswers } = userSlice.actions;
+export const { incrementScore, setAnswers, pushToCorrectAnswers, pushToIncorrectAnswers, resetUserData } = userSlice.actions;
 
 export default userSlice.reducer

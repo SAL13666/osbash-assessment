@@ -33,3 +33,18 @@
 .Active {
     background-color: #57027e;
 }
+
+@media only screen and (max-width: 1024px) {
+    .Question {
+        min-width: 100%;
+        grid-template-columns: 1fr;
+    }
+    
+    .Question h1 {
+        font-size: 1.5rem;
+    }
+    
+    .Question ul {
+        margin-top: 1.5rem;
+    }
+}

@@ -1,16 +1,22 @@
-import { useEffect } from "react";
 import styles from "./Scores.module.css";
-import { useSelector } from "react-redux";
-import Answer from "../../Components/Answer/Answer";
+import { useDispatch, useSelector } from "react-redux";
+import Answer from "@Components/Answer/Answer";
+import Button from "@Components/Button/Button";
+import { resetUserData } from "@Store/User/userSlice";
+
 const Scores = () => {
     const {correctAnswers, incorrectAnswers, score} = useSelector((state) => state.userData.value);
     const {questions, 'Tot degree': totalDegree} = useSelector((state) => state.quiz.value);
+    const dispatch = useDispatch();
+    const handleRetakeQuiz = () => {
+        dispatch(resetUserData());
+    }
     return (
         <div className={styles.Scores}>
             <h1>you scored {score}/ {totalDegree}</h1>
             <div className={styles.Header}>
             <p>Question</p>
-            <p>yourAnswer</p>
+            <p>your Answer</p>
             <p>Correct Answer</p>
             </div>
             {correctAnswers.map((answer, index) => <Answer 
@@ -27,6 +33,7 @@ const Scores = () => {
             correct={false}
             correctAnswer={questions[answer.index].choices[answer.correctChoice]}
             />)}
+            <Button title={"Retake The Quiz"} link={true} to="/" onClick={handleRetakeQuiz} style={{marginTop:"30px"}}/>
         </div>
     );
 };
