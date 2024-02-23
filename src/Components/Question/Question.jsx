@@ -8,7 +8,6 @@ const Question = ({ questionData, questionIndex }) => {
     const [activeAnswer, setActiveAnswer] = useState(null);
     const userAnswers = useSelector((state) => state.userData.value.answers);
     const dispatch = useDispatch();
-    console.log(userAnswers);
     if (!questionData) {
         return <div>Loading...</div>;
     }
